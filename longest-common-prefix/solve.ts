@@ -1,26 +1,18 @@
 function longestCommonPrefix(strs: string[]): string {
-  let prefix = ""
+  const shortest = strs.reduce((prev, current) => {
+    if (prev.length <= current.length) return prev
+    else return current
+  })
 
-  let i = 0
-  let isEnd = false
-
-  while (!isEnd) {
-    if (isEnd) break
-
-    for (const str of strs) {
-      if (i % prefix.length == 0) prefix += str[i]
-      if (prefix.at(-1) !== str[i]) {
-        if (i < 1) prefix = ""
-
-        isEnd = true
-        break
-      }
-    }
-
-    i += 1
-  }
-// TODO: solve this
-  return prefix
+  return shortest.slice(
+    0,
+    shortest
+      .split("")
+      .map((_, i, arr) =>
+        strs.filter((str) => str.startsWith(arr.slice(0, i + 1).join("")))
+      )
+      .filter((v) => v.length == strs.length).length
+  )
 }
 
-console.log(longestCommonPrefix(["ap", "app", "appp"]))
+console.log(longestCommonPrefix(["ap", "ap", "ap", "appppp", "app", "appp"]))
