@@ -9,7 +9,7 @@ function longestAlternatingSubarray(nums: number[], threshold: number): number {
     let end = l
 
     for (let r = l + 1; r < nums.length; r++) {
-      if (!(nums[r] % 2 != nums[r - 1] % 2)) break
+      if (!(nums[r] % 2 != nums[r - 1] % 2)) breakz
       if (nums[r] > threshold) break
 
       end += 1
