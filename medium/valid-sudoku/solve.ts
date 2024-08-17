@@ -6,10 +6,7 @@ function isValidSudoku(board: string[][]): boolean {
     let past: string[] = []
 
     for (const j of i.filter((v) => !v.includes("."))) {
-      if (past.includes(j)) {
-        console.log("HELL1;")
-        return false
-      }
+      if (past.includes(j)) return false
       past.push(j)
     }
   }
@@ -20,12 +17,7 @@ function isValidSudoku(board: string[][]): boolean {
 
     for (let j = 0; j < 9; j++) past.push(board[j][i])
 
-    console.log(past)
-
-    if (checkDuplicated(past.filter((v) => v != "."))) {
-      console.log("HELL2;")
-      return false
-    }
+    if (checkDuplicated(past.filter((v) => v != "."))) return false
   }
 
   for (let i = 0; i < 9; i += 3) {
@@ -43,10 +35,8 @@ function isValidSudoku(board: string[][]): boolean {
       checkDuplicated(square1.flat(1).filter((v) => v != ".")) ||
       checkDuplicated(square2.flat(1).filter((v) => v != ".")) ||
       checkDuplicated(square3.flat(1).filter((v) => v != "."))
-    ) {
-      console.log("HELL3;")
+    )
       return false
-    }
   }
 
   return true
