@@ -20,6 +20,7 @@ function isValidSudoku(board: string[][]): boolean {
     if (checkDuplicated(past.filter((v) => v != "."))) return false
   }
 
+  // split the array into 3x3 squares
   for (let i = 0; i < 9; i += 3) {
     const b1 = [[...board[i]], [...board[i + 1]], [...board[i + 2]]]
 
