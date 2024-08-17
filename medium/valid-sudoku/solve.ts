@@ -22,7 +22,7 @@ function isValidSudoku(board: string[][]): boolean {
 
     console.log(past)
 
-    if (checkDuplicated(past.replace)) {
+    if (checkDuplicated(past.filter((v) => v != "."))) {
       console.log("HELL2;")
       return false
     }
